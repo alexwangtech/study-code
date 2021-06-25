@@ -15,6 +15,9 @@ public class Solution {
             s1Array.add(c);
         }
 
+        // For ever character in our second string, remove it from the ArrayList
+        // if it exists. If it does not exist, immediately return false.
+        // If the ArrayList is preemptively empty, also return false.
         for (char c : s2.toCharArray()) {
             if (!s1Array.isEmpty()) {
                 if (!s1Array.remove((Character) c)) {
