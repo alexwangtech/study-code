@@ -36,11 +36,34 @@ public class BookSolution {
     }
 
 
+    // If we are not allowed to use additional data structures, we can
+    // compare every char in the string to every other char in the string.
+    // This is not optimal, but it would satisfy the rule of not using any
+    // additional data structures.
+
+    public static boolean isUnique2(String s) {
+        char[] charArray = s.toCharArray();
+
+        for (int i = 0; i < charArray.length - 1; i++) {
+            for (int j = i + 1; j < charArray.length; j++) {
+                if (charArray[i] == charArray[j]) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+
     public static void main(String[] args) {
         String a = "abcde";
         String b = "aaaaa";
 
         System.out.println(a + ": " + isUnique(a)); // expected true
         System.out.println(b + ": " + isUnique(b)); // expected false
+
+        System.out.println(a + ": " + isUnique2(a)); // expected true
+        System.out.println(b + ": " + isUnique2(b)); // expected false
     }
 }
