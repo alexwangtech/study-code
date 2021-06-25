@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Solution {
+public class Attempt {
 
     // Given two strings, write a method to decide if one is a permutation
     // of the other.
