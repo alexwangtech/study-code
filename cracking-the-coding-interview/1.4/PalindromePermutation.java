@@ -1,8 +1,11 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Hashtable;
 
-public class Solution {
+public class PalindromePermutation {
 
-    // Given a string, checkw whether it is a permutation of a palindrome.
+    // Given a string, check whether it is a permutation of a palindrome.
 
 
     public static boolean isPermuPal(String s) {
@@ -10,7 +13,7 @@ public class Solution {
         ArrayList<Character> charList = new ArrayList<>();
         ArrayList<Integer> numList = new ArrayList<>();
 
-        // The first step would be to record all occurences of characters.
+        // The first step would be to record all occurrences of characters.
         for (char c : s.toCharArray()) {
 
             // If the character is already recorded, then just update the counter.
@@ -41,10 +44,40 @@ public class Solution {
         return numOdds == 1;
     }
 
+    // We can optimize the counting by using a HashMap instead.
+
+    public static boolean isPermPal1(String s) {
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        // Start off by populating the map with char : int pairs.
+        // Whitespace characters don't count.
+        for (char c : s.toCharArray()) {
+            if (c != ' ') {
+                if (map.containsKey(c)) {
+                    map.put(c, map.get(c) + 1);
+                } else {
+                    map.put(c, 1);
+                }
+            }
+        }
+
+        // Search for occurrences. of odd values.
+        int numOdds = 0;
+        for (int i : map.values()) {
+            if (i % 2 == 1) {
+                ++numOdds;
+            }
+        }
+
+        // There should only be one odd number
+        return numOdds == 1;
+    }
+
     // Main method
     public static void main(String[] args) {
         String s = "tact coa";
 
         System.out.println("Is permutation of palindrome: " + isPermuPal(s));
+        System.out.println("Is permutation of palindrome: " + isPermPal1(s));
     }
 }

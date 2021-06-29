@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class BookSolution {
+public class BookSolution1 {
 
     // Check Permutation: Given two strings, write a method to decide if one
     // is a permutation of the other.
